@@ -1,0 +1,32 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "gui-operator-mcp"
+version = "0.1.0"
+description = "OCR-first Windows desktop operation tools exposed over MCP"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "gui-operator contributors" }]
+dependencies = [
+  "mss>=9",
+  "numpy",
+  "opencv-python",
+  "rapidocr-onnxruntime",
+  "pywin32; sys_platform == 'win32'",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8"]
+
+[project.scripts]
+gui-operator-mcp = "gui_operator_mcp.__main__:main"
+gui-operator-allow-all = "gui_operator_mcp.allow_all:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

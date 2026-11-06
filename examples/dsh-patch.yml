@@ -1,0 +1,12 @@
+# Add the GUI operator MCP server to a DSH profile.
+# Merge this single `insert` into $DSH_HOME/profiles/<name>/cordis.patch.yml,
+# or pass it with `dsh web --patch <this file>`.
+- insert:
+    - id: mcp-gui-operator
+      name: '@deepseek-ai/dsh-mcp-client'
+      config:
+        serverName: gui
+        transport: stdio
+        command: gui-operator-mcp
+        args: []
+        toolCallTimeoutMs: 120000
